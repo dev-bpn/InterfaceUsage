@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        mAdapter = new MoviesAdapter(movieList , this);
+        mAdapter = new MoviesAdapter(movieList ,  this );
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

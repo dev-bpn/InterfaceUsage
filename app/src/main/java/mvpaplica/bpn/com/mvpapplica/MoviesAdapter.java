@@ -28,9 +28,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
         @Override
         public void onClick(View v) {
-
             recyclerItemClick.onItemClick(getAdapterPosition());
-
         }
     }
  
@@ -38,6 +36,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     public MoviesAdapter(List<mvpaplica.bpn.com.mvpapplica.Movie> moviesList , Context context) {
         this.moviesList = moviesList;
         recyclerItemClick = (RecyclerItemClick) context;
+
     }
  
     @Override
