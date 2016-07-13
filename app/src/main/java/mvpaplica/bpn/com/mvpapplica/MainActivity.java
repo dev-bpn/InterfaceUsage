@@ -1,6 +1,7 @@
 package mvpaplica.bpn.com.mvpapplica;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RecyclerItemClick , BackgroundTaskResult{
+public class MainActivity extends AppCompatActivity implements RecyclerItemClick , BackgroundTaskResult  , ServiceTaskResult{
 
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -118,7 +119,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+
+            Intent intent = new Intent(this , MyBackgroundService.class);
+            startService(intent);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -139,6 +143,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
 
     @Override
     public void onTaskDone(String message) {
+
+        Toast.makeText(this , message , Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onServiceTaskDone(String message) {
 
         Toast.makeText(this , message , Toast.LENGTH_SHORT).show();
 
