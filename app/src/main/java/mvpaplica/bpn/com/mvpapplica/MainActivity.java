@@ -1,5 +1,6 @@
 package mvpaplica.bpn.com.mvpapplica;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RecyclerItemClick{
+public class MainActivity extends AppCompatActivity implements RecyclerItemClick , BackgroundTaskResult{
 
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -127,6 +128,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
     public void onItemClick(int position) {
 
         Toast.makeText(this , "clicked at position: "+ position , Toast.LENGTH_SHORT).show();
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading please wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
+        new BackgroundTask(this , progressDialog).execute();
+
+    }
+
+    @Override
+    public void onTaskDone(String message) {
+
+        Toast.makeText(this , message , Toast.LENGTH_SHORT).show();
 
     }
 }
