@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RecyclerItemClick , BackgroundTaskResult  , ServiceTaskResult{
+public class MainActivity extends AppCompatActivity implements RecyclerItemClick , BackgroundTaskResult {
 
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -148,10 +148,4 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemClick
 
     }
 
-    @Override
-    public void onServiceTaskDone(String message) {
-
-        Toast.makeText(this , message , Toast.LENGTH_SHORT).show();
-
-    }
 }
